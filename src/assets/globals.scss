@@ -1,0 +1,22 @@
+@use "sass:map";
+
+$theme-colors: (
+  "primary-color": #222435,
+  "secondary-color": #383A4C,
+  "dark-gray-color": #67697A,
+  "light-gray-color": #9799AD,
+  "dark-blue-color": #1E446E,
+  "light-blue-color": #4EA2FF,
+  "white-color": #FFFFFF,
+);
+
+$border-radius: 10px;
+
+body {
+  margin: 0;
+  min-height: 1000px;
+  background: map.get($theme-colors, "primary-color");
+
+  color: map.get($theme-colors, "white-color");
+  font-family: "Arial";
+}
