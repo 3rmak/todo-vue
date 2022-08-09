@@ -1,5 +1,5 @@
 <template>
-  <div class='list-container'>
+  <div class="list-container">
     <todo />
     <todo />
     <todo />
@@ -7,16 +7,16 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Todo from './ToDo.vue';
 
 export default {
-  name: 'List',
+  name: 'TodoList',
   components: { Todo },
 };
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .list-container {
   display: flex;
   flex-direction: column;
