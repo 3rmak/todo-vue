@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import './assets/globals.scss';
+import './styles/globals.scss';
 
 createApp(App).mount('#app');
