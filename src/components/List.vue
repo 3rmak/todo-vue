@@ -8,7 +8,7 @@
 </template>
 
 <script lang='ts'>
-import Todo from './Todo.vue';
+import Todo from './ToDo.vue';
 
 export default {
   name: 'List',

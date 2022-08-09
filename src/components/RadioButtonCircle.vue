@@ -1,24 +1,21 @@
 <template>
-  <div class='select-circle'>
-    <div :class="[selected ? 'filled-circle' : 'empty-circle']">
-    </div>
+  <div class="select-circle">
+    <div
+      @click="$emit('change', !selected)"
+      :class="[selected ? 'filled-circle' : 'empty-circle']"
+    ></div>
   </div>
 </template>
 
-<script lang='ts'>
+<script setup lang="ts">
 import { defineProps } from 'vue';
 
 defineProps<{ selected: boolean }>();
-
-export default {
-  name: 'RadioButtonCircle',
-  props: ['selected'],
-};
 </script>
 
-<style scoped lang='scss'>
-@use "sass:map";
-@import "../assets/globals";
+<style scoped lang="scss">
+@use 'sass:map';
+@import '../styles/globals';
 
 .select-circle {
   width: 20px;
@@ -30,7 +27,7 @@ export default {
   height: 100%;
   border-radius: 100%;
 
-  border: 2px solid map.get($theme-colors, "dark-gray-color");
+  border: 2px solid map.get($theme-colors, 'dark-gray-color');
 }
 
 .filled-circle {
@@ -41,6 +38,10 @@ export default {
   justify-content: center;
   align-items: center;
 
-  background: map.get($theme-colors, "light-blue-color");
+  background-color: map.get($theme-colors, 'light-blue-color');
+  background-image: url('../assets/check.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70%;
 }
 </style>

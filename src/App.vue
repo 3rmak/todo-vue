@@ -1,7 +1,7 @@
 <template>
-  <div class='app'>
-    <h1 class='title'>Hello, this is to do list</h1>
-    <list class='list' />
+  <div class="app">
+    <h1 class="title">To-do list</h1>
+    <list class="list" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import List from './components/List.vue';
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .app {
   padding: 0;
   margin: 0;
@@ -25,6 +25,10 @@ import List from './components/List.vue';
 
 .title {
   color: #535568;
+
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
 }
 
 .list {
