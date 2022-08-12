@@ -1,13 +1,27 @@
 <template>
   <div class="todo-page-container">
+    <h1 class="title">To-do list</h1>
     <div class="todo-page">
-      <h1 class="title">To-do list</h1>
       <todo-input />
-      <todo-list class="list" :todoList="todos" />
-      <!--      <todo-list class="list" :todoList="activeTodos" />-->
-      <br />
-      <br />
-      <!--      <todo-list class="list" :todoList="completedTodos" />-->
+      <todo-list
+        class="list"
+        :todoList="
+          todos.filter((todo) => todo.status === TodoStatusEnum.ACTIVE)
+        "
+      />
+      <button
+        class="hide-completed-button"
+        @click="changeCompletedTodosVisibility($event)"
+      >
+        Completed
+      </button>
+      <todo-list
+        v-if="!isCompletedHidden"
+        class="list"
+        :todoList="
+          todos.filter((todo) => todo.status === TodoStatusEnum.COMPLETED)
+        "
+      />
     </div>
   </div>
 </template>
@@ -29,34 +43,35 @@ export default {
   setup() {
     const { fetchTodos, getAllTodos } = useTodoStore();
 
+    const isCompletedHidden = ref<boolean>(false);
     const todos = ref<TodoDto[]>([]);
 
-    const activeTodos = ref<TodoDto[]>([]);
-    const completedTodos = ref<TodoDto[]>([]);
+    function changeCompletedTodosVisibility(event: Event) {
+      event.preventDefault();
+
+      isCompletedHidden.value = !isCompletedHidden.value;
+    }
 
     onMounted(async () => {
       await fetchTodos().then(() => {
         todos.value = getAllTodos();
-
-        activeTodos.value = todos.value.filter(
-          (todo) => todo.status == TodoStatusEnum.ACTIVE,
-        );
-        completedTodos.value = todos.value.filter(
-          (todo) => todo.status == TodoStatusEnum.COMPLETED,
-        );
       });
     });
 
     return {
+      isCompletedHidden,
       todos,
-      activeTodos,
-      completedTodos,
+      TodoStatusEnum,
+      changeCompletedTodosVisibility,
     };
   },
 };
 </script>
 
 <style scoped lang="scss">
+@use "sass:map";
+@import "../styles/globals";
+
 .todo-page-container {
   padding: 0;
   margin: 0;
@@ -70,11 +85,11 @@ export default {
   align-items: center;
 
   .todo-page {
-    width: 80%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
   }
 }
 
@@ -89,5 +104,27 @@ export default {
 .list {
   display: flex;
   justify-content: center;
+
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.hide-completed-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  height: 30px;
+  width: 14%;
+  color: map.get($theme-colors, "white-color");
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  border: 1px solid map.get($theme-colors, "light-blue-color");
+  border-radius: 4px;
+  background: map.get($theme-colors, "dark-blue-color");
+}
+.hide-completed-button:hover {
+  background: #285c96;
 }
 </style>

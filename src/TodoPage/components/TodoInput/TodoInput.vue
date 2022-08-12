@@ -57,7 +57,7 @@ export default {
 
 .todo-input-container {
   margin: 5px;
-  width: 74%;
+  width: 100%;
   height: 60px;
   background: map.get($theme-colors, "primary-color");
   border: 1px solid map.get($theme-colors, "subsecondary-color");

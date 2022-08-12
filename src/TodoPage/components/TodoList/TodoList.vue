@@ -20,6 +20,6 @@ defineProps<{ todoList: Array<TodoDto> }>();
   flex-direction: column;
   justify-content: center;
   margin-top: 30px;
-  width: 74%;
+  width: 100%;
 }
 </style>
