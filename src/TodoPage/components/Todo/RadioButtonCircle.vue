@@ -1,21 +1,19 @@
 <template>
   <div class="select-circle">
     <div
-      @click="$emit('change', !selected)"
-      :class="[selected ? 'filled-circle' : 'empty-circle']"
+      @click="$emit('change', !status)"
+      :class="[status ? 'filled-circle' : 'empty-circle']"
     ></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
-defineProps<{ selected: boolean }>();
+defineProps<{ status: boolean }>();
 </script>
 
 <style scoped lang="scss">
-@use 'sass:map';
-@import '../styles/globals';
+@use "sass:map";
+@import "../../../styles/globals";
 
 .select-circle {
   width: 20px;
@@ -27,7 +25,7 @@ defineProps<{ selected: boolean }>();
   height: 100%;
   border-radius: 100%;
 
-  border: 2px solid map.get($theme-colors, 'dark-gray-color');
+  border: 2px solid map.get($theme-colors, "dark-gray-color");
 }
 
 .filled-circle {
@@ -38,8 +36,8 @@ defineProps<{ selected: boolean }>();
   justify-content: center;
   align-items: center;
 
-  background-color: map.get($theme-colors, 'light-blue-color');
-  background-image: url('../assets/check.svg');
+  background-color: map.get($theme-colors, "light-blue-color");
+  background-image: url("../../../assets/check.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 70%;

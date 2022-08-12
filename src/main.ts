@@ -1,6 +1,11 @@
-import { createApp } from 'vue';
-import App from './App.vue';
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
 
-import './styles/globals.scss';
+import "./styles/globals.scss";
 
-createApp(App).mount('#app');
+const app = createApp(App);
+
+app.use(createPinia());
+
+app.mount("#app");

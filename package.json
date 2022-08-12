@@ -13,6 +13,7 @@
     "@rushstack/eslint-patch": "^1.1.4",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "pinia": "^2.0.0-rc.10",
     "roboto-fontface": "*",
     "vue": "^3.2.37",
     "webfontloader": "^1.0.0"
